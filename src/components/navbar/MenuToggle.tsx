@@ -1,12 +1,12 @@
 import {
   Box,
   IconButton,
-  Link,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 import { MdMoreVert } from "react-icons/md";
 
@@ -21,11 +21,15 @@ const MenuToggle = () => {
           icon={<MdMoreVert />}
         />
         <MenuList>
-          <MenuItem>
-            <Link href="/">All Notes</Link>
+          <MenuItem
+            as={Link}
+            to="/">
+            All Notes
           </MenuItem>
-          <MenuItem>
-            <Link href="/archived">Archived Notes</Link>
+          <MenuItem
+            as={Link}
+            to="/archived">
+            Archived Notes
           </MenuItem>
         </MenuList>
       </Menu>
