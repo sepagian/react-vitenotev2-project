@@ -31,6 +31,7 @@ const NoteAction = ({
   return (
     <Menu>
       <MenuButton
+        _hover={{ bg: "gray.300" }}
         as={IconButton}
         variant="ghost"
         aria-label="Options"
