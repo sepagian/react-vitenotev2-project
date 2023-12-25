@@ -14,6 +14,7 @@ type Props = {
   onDelete: (id: string) => void;
   onArchive: (id: string) => void;
   onRestore: (id: string) => void;
+  onAdd: (note: { title: string; body: string }) => void;
 };
 const NoteList = (props: Props) => {
   return (
@@ -21,7 +22,7 @@ const NoteList = (props: Props) => {
       columns={[1, 2, 3, 4]}
       spacing={4}
       p={4}>
-      <AddNoteModal />
+      <AddNoteModal addNote={props.onAdd} />
       {props.notes.map((note) => (
         <NoteCard
           key={note.id}
