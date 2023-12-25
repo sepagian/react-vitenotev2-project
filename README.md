@@ -7,3 +7,15 @@ This repository is the refactored version of my previous React application. You 
 ### 2023/12/24
 
 - Initial commit
+
+### 2023/12/25
+
+- Added 'utils' for project-specific funtionalities
+
+- Created new components for:
+
+  - Modal
+
+  - NavBar; and
+
+  - NoteList
