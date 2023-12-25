@@ -1,4 +1,5 @@
-import { Box, Stack, Link, Text } from "@chakra-ui/react";
+import { Box, Stack, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const MenuLinks = () => {
   return (
@@ -9,14 +10,10 @@ const MenuLinks = () => {
         spacing={4}
         align={"center"}
         direction={"row"}>
-        <Link
-          href="/"
-          textUnderlineOffset={8}>
+        <Link to="/">
           <Text>All Notes</Text>
         </Link>
-        <Link
-          href="/archived"
-          textUnderlineOffset={8}>
+        <Link to="/archived">
           <Text>Archived</Text>
         </Link>
       </Stack>
