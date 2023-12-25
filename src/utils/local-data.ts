@@ -1,4 +1,12 @@
-let notes = [
+interface Note {
+  id: string;
+  title: string;
+  body: string;
+  createdAt: string;
+  archived: boolean;
+}
+
+let notes: Note[] = [
   {
     id: "notes-1",
     title: "Babel",
@@ -43,21 +51,30 @@ let notes = [
   },
 ];
 
-function getAllNotes() {
+function getAllNotes(): Note[] {
   return notes;
 }
 
 function getNote(id: string) {
   const foundedNote = notes.find((note) => note.id === id);
+  if (!foundedNote) {
+    return {
+      id: "",
+      title: "",
+      body: "",
+      createdAt: "",
+      archived: false,
+    };
+  }
   return foundedNote;
 }
 
-function getActiveNotes() {
+function getActiveNotes(): Note[] {
   const activeNotes = notes.filter((note) => !note.archived);
   return activeNotes;
 }
 
-function getArchivedNotes() {
+function getArchivedNotes(): Note[] {
   const archivedNotes = notes.filter((note) => note.archived);
   return archivedNotes;
 }
