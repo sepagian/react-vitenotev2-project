@@ -1,12 +1,10 @@
 # React ViteNote v2
 
-This repository is the refactored version of my previous React application. You can view the previous code repo [here](https://github.com/sepagian/react-vitenote-project).
+This project is a straightforward note-taking application built with React, refactored to TypeScript (TSX) from a previous version written in JSX. It allow users to perform basic actions like adding new notes, archiving, restoring, and deleting them.
+
+You can view the previous code repo [here](https://github.com/sepagian/react-vitenote-project).
 
 ## Changelog
-
-### 2023/12/24
-
-- Initial commit
 
 ### 2023/12/25
 
@@ -19,3 +17,13 @@ This repository is the refactored version of my previous React application. You 
   - NavBar; and
 
   - NoteList
+
+- Added features including:
+
+  - Create, archive, unarchive, and delete notes
+
+  - React Hook Form and Zod
+
+### 2023/12/24
+
+- Initial commit
