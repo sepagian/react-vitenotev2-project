@@ -10,6 +10,7 @@ const NavBar = () => {
       justifyContent={"space-between"}>
       <HStack>
         <Image
+          boxSize={"32px"}
           src="/vite.svg"
           alt="Vite Logo"
         />
