@@ -1,35 +1,58 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import NavBar from "./components/navbar/NavBar";
+import SearchBar from "./components/navbar/SearchBar";
+import NoteList from "./components/note/NoteList";
+import {
+  addNote,
+  archiveNote,
+  deleteNote,
+  getAllNotes,
+  unarchiveNote,
+} from "./utils/local-data";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [notes, setNotes] = useState(getAllNotes());
+  notes.sort((a, b) => {
+    return Date.parse(b.createdAt) - Date.parse(a.createdAt);
+  });
+
+  const onAddNote = (note: { title: string; body: string }) => {
+    addNote(note.title, note.body);
+    const updatedNotes = getAllNotes();
+    setNotes(updatedNotes);
+  };
+
+  const onArchiveNote = (id: string) => {
+    archiveNote(id);
+    const updatedNotes = getAllNotes();
+    setNotes(updatedNotes);
+  };
+
+  const onRestoreNote = (id: string) => {
+    unarchiveNote(id);
+    const updatedNotes = getAllNotes();
+    setNotes(updatedNotes);
+  };
+
+  const onDeleteNote = (id: string) => {
+    deleteNote(id);
+    const updatedNotes = getAllNotes();
+    setNotes(updatedNotes);
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NavBar />
+      <SearchBar />
+      <NoteList
+        notes={notes}
+        onAdd={onAddNote}
+        onArchive={onArchiveNote}
+        onDelete={onDeleteNote}
+        onRestore={onRestoreNote}
+      />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
