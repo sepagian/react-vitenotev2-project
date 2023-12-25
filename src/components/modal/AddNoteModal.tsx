@@ -54,7 +54,13 @@ const AddNoteModal = ({ addNote }: Props) => {
     onClose();
   };
 
+  const onCloseModal = () => {
+    reset();
+    onClose();
+  };
+
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Card
@@ -66,6 +72,7 @@ const AddNoteModal = ({ addNote }: Props) => {
         as={"button"}
         onClick={onOpen}
         align={"center"}
+        height={{ base: "auto", sm: "150px", md: "240px", lg: "240px" }}
         justifyContent={"center"}>
         <Icon
           as={MdAdd}
@@ -82,7 +89,7 @@ const AddNoteModal = ({ addNote }: Props) => {
 
       <Modal
         isOpen={isOpen}
-        onClose={onClose}>
+        onClose={onCloseModal}>
         <ModalOverlay />
         <form onSubmit={handleSubmit(onSubmit)}>
           <ModalContent>
@@ -96,7 +103,9 @@ const AddNoteModal = ({ addNote }: Props) => {
                   size={"md"}
                 />
                 <Flex justifyContent={"space-between"}>
-                  <FormHelperText as={Text}>
+                  <FormHelperText
+                    as={Text}
+                    color="red.500">
                     {errors.title && errors.title.message}
                   </FormHelperText>
                   <FormHelperText as={Text}>
@@ -110,7 +119,9 @@ const AddNoteModal = ({ addNote }: Props) => {
                   mt={4}
                 />
                 <Flex justifyContent={"space-between"}>
-                  <FormHelperText as={Text}>
+                  <FormHelperText
+                    as={Text}
+                    color="red.500">
                     {errors.body && errors.body.message}
                   </FormHelperText>
                   <FormHelperText as={Text}>
@@ -123,7 +134,7 @@ const AddNoteModal = ({ addNote }: Props) => {
               <Button
                 mr={3}
                 variant={"outline"}
-                onClick={onClose}
+                onClick={onCloseModal}
                 type="button">
                 Close
               </Button>
