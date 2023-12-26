@@ -13,6 +13,7 @@ function App() {
     getArchivedNotes,
     getActiveNotes,
     getNoteDetail,
+    editNote,
   } = useNoteStore();
   const { searchInput } = useSearchStore();
 
@@ -48,7 +49,12 @@ function App() {
         />
         <Route
           path="/:id"
-          element={<NoteDetail getNote={getNoteDetail} />}
+          element={
+            <NoteDetail
+              getNote={getNoteDetail}
+              editNote={editNote}
+            />
+          }
         />
       </Routes>
     </>
