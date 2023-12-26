@@ -22,18 +22,12 @@ import { useForm } from "react-hook-form";
 import { MdAdd } from "react-icons/md";
 import { z } from "zod";
 
-const noteSchema = z.object({
-  title: z
-    .string()
-    .min(3, { message: "Title must be at least 3 characters" })
-    .max(50, { message: "Title must be at most 50 characters" }),
-  body: z
-    .string()
-    .min(3, { message: "Content must be at least 3 characters" })
-    .max(280, { message: "Content must be at most 280 characters" }),
+const schema = z.object({
+  title: z.string().min(3, { message: "Title must be at least 3 characters" }),
+  body: z.string().min(3, { message: "Body must be at least 3 characters" }),
 });
 
-type Note = z.infer<typeof noteSchema>;
+type Note = z.infer<typeof schema>;
 
 interface Props {
   addNote: (note: Note) => void;
@@ -46,7 +40,7 @@ const AddNoteModal = ({ addNote }: Props) => {
     formState: { errors, isValid },
     reset,
     watch,
-  } = useForm<Note>({ resolver: zodResolver(noteSchema) });
+  } = useForm<Note>({ resolver: zodResolver(schema) });
 
   const onSubmit = (note: Note) => {
     addNote(note);
@@ -98,7 +92,10 @@ const AddNoteModal = ({ addNote }: Props) => {
               <FormControl>
                 <Input
                   {...register("title")}
+                  id="title"
+                  type="text"
                   maxLength={50}
+                  isInvalid={!!errors.title}
                   placeholder="Enter your note title"
                   size={"md"}
                 />
@@ -114,7 +111,9 @@ const AddNoteModal = ({ addNote }: Props) => {
                 </Flex>
                 <Textarea
                   {...register("body")}
+                  id="body"
                   maxLength={280}
+                  isInvalid={!!errors.body}
                   placeholder="Enter your note body"
                   mt={4}
                 />
@@ -133,15 +132,14 @@ const AddNoteModal = ({ addNote }: Props) => {
             <ModalFooter>
               <Button
                 mr={3}
-                variant={"outline"}
+                variant={"ghost"}
                 onClick={onCloseModal}
                 type="button">
                 Close
               </Button>
               <Button
-                isDisabled={!isValid}
-                colorScheme={isValid ? "blue" : "gray"}
-                type="submit">
+                type="submit"
+                colorScheme={isValid ? "blue" : "gray"}>
                 Save
               </Button>
             </ModalFooter>
