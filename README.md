@@ -14,6 +14,10 @@ You can view the previous code repo [here](https://github.com/sepagian/react-vit
 
   - Added search functionality with a dedicated search bar component
 
+  - Added note editing functionality
+
+  - Fixed form validation error
+
 ### 2023/12/25
 
 - Added 'utils' for project-specific funtionalities
