@@ -20,6 +20,7 @@ interface NoteStore {
   getArchivedNotes: (searchInput: string) => Note[];
   getActiveNotes: (searchInput: string) => Note[];
   getNoteDetail: (id: string) => Note;
+  editNote: (id: string, updatedNotes: Note) => void;
 }
 
 interface SearchStore {
@@ -58,6 +59,17 @@ export const useNoteStore = create<NoteStore>((set) => ({
     deleteNote(id);
     const updatedNotes = getAllNotes();
     set({ notes: updatedNotes });
+  },
+
+  editNote: (id: string, updatedNote: Note) => {
+    const notes = getAllNotes();
+    const index = notes.findIndex((note) => note.id === id);
+    notes[index] = {
+      ...updatedNote,
+      id,
+      createdAt: new Date().toISOString(),
+    };
+    set({ notes: notes });
   },
 
   getActiveNotes: (searchInput: string) => {
