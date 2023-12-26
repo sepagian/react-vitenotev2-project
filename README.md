@@ -6,6 +6,14 @@ You can view the previous code repo [here](https://github.com/sepagian/react-vit
 
 ## Changelog
 
+### 2023/12/26
+
+- Enhanced note-related features, including:
+
+  - Centralized state management for notes and search using Zustand
+
+  - Added search functionality with a dedicated search bar component
+
 ### 2023/12/25
 
 - Added 'utils' for project-specific funtionalities
