@@ -28,7 +28,8 @@ const NoteList = (props: Props) => {
         "repeat(4, 1fr)",
       ]}
       p={4}
-      gap={4}>
+      gap={4}
+    >
       {props.showAddButton && <AddNoteModal addNote={props.onAdd} />}
       {props.notes.length === 0 && (
         <Card
@@ -39,7 +40,8 @@ const NoteList = (props: Props) => {
           bg={"gray.50"}
           align={"center"}
           height={{ base: "auto", sm: "150px", md: "240px", lg: "240px" }}
-          justifyContent={"center"}>
+          justifyContent={"center"}
+        >
           <Text fontSize={"lg"}>No note exist</Text>
         </Card>
       )}

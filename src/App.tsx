@@ -3,6 +3,7 @@ import NavBar from "./components/navbar/NavBar";
 import NoteList from "./components/note/NoteList";
 import NoteDetail from "./components/note/NoteDetail";
 import { useNoteStore, useSearchStore } from "./stores";
+import { useEffect } from "react";
 
 function App() {
   const {
@@ -49,12 +50,7 @@ function App() {
         />
         <Route
           path="/:id"
-          element={
-            <NoteDetail
-              getNote={getNoteDetail}
-              editNote={editNote}
-            />
-          }
+          element={<NoteDetail getNote={getNoteDetail} editNote={editNote} />}
         />
       </Routes>
     </>
